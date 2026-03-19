@@ -1,0 +1,394 @@
+/* ─────────────── shared ─────────────── */
+.toggle-input {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+/* ─────────────── Toggle A ─────────────── */
+.toggle-a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  border-radius: 50px;
+  padding: 0 6px;
+  width: 62px;
+  height: 28px;
+  background-color: var(--state-off);
+  box-shadow: var(--track-shadow);
+  transition: background-color var(--transition);
+}
+
+.toggle-a.is-checked {
+  background-color: var(--state-on);
+}
+
+.toggle-a__handle {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  background-image: var(--wood-texture);
+  background-size: 328px 110px;
+  background-position: center;
+  box-shadow: var(--inset-shadow);
+  transition: transform var(--transition);
+}
+
+.toggle-a.is-checked .toggle-a__handle {
+  transform: translateX(34px);
+}
+
+.toggle-a__handle::before {
+  content: "";
+  position: absolute;
+  inset: 6.5px;
+  border-radius: 50%;
+  background-image: linear-gradient(rgba(174, 34, 1, 0.125), transparent);
+  box-shadow:
+    inset 0 1px 2px var(--wood-burn),
+    0 1px 1px rgba(255, 255, 255, 0.75);
+}
+
+.toggle-a__icon {
+  width: 24px;
+  height: 24px;
+  fill: #fff;
+  filter: drop-shadow(0 -1px 1px rgba(0, 0, 0, 0.25));
+}
+
+/* ─────────────── Toggle B ─────────────── */
+.toggle-b {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-radius: 5px;
+  width: 72px;
+  height: 28px;
+  background-color: var(--wood-dark);
+  box-shadow: var(--track-shadow);
+  transition: background-color var(--transition);
+}
+
+.toggle-b.is-checked {
+  background-color: var(--state-on);
+}
+
+.toggle-b__handle {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: space-between;
+  align-content: space-between;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  border-radius: inherit;
+  padding: 1px;
+  width: 36px;
+  height: 100%;
+  transform: translateX(-4px);
+  background-image: var(--wood-texture);
+  background-size: 328px 110px;
+  background-position: center;
+  box-shadow: var(--inset-shadow);
+  transition: transform var(--transition);
+}
+
+.toggle-b.is-checked .toggle-b__handle {
+  transform: translateX(36px);
+}
+
+.toggle-b__dot {
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  box-shadow:
+    inset 0 1px 1px var(--wood-burn),
+    0 1px 1px rgba(255, 255, 255, 0.75);
+}
+
+.toggle-b__text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: var(--text-shadow);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+.toggle-b__text--off {
+  /* visible when unchecked — sits on right side */
+  right: 6px;
+  left: auto;
+}
+.toggle-b.is-checked .toggle-b__text--off {
+  /* slide out / hide when checked */
+  opacity: 0;
+}
+
+.toggle-b__text--on {
+  /* hidden when unchecked */
+  left: 6px;
+  right: auto;
+  opacity: 0;
+}
+.toggle-b.is-checked .toggle-b__text--on {
+  opacity: 1;
+}
+
+/* ─────────────── Toggle C ─────────────── */
+.toggle-c {
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+  position: relative;
+}
+
+.toggle-c .toggle-input {
+  position: absolute;
+  inset: 0;
+}
+
+.toggle-c__text {
+  font-size: 14px;
+  color: #766f6a;
+  text-shadow: var(--text-shadow-light);
+}
+
+.toggle-c__track-wrapper-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.toggle-c__track-wrapper {
+  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.75));
+}
+
+.toggle-c__track {
+  border-radius: 50px;
+  width: 52px;
+  height: 14px;
+  background-color: var(--wood-dark);
+  background-image:
+    radial-gradient(
+      14px 14px at 50% calc(50% + 2px),
+      var(--wood-dark) 50%,
+      var(--wood-darker) calc(50% + 1px)
+    ),
+    radial-gradient(
+      14px 14px at 50% calc(50% + 2px),
+      var(--wood-dark) 50%,
+      var(--wood-darker) calc(50% + 1px)
+    ),
+    linear-gradient(rgba(0, 0, 0, 0.5) calc(50% - 2px), transparent 50%);
+  background-size:
+    14px 14px,
+    14px 14px,
+    100% 100%;
+  background-position:
+    0 0,
+    100% 0,
+    0 0;
+  background-repeat: no-repeat;
+  -webkit-mask-image:
+    radial-gradient(14px circle, #fff 50%, transparent 0),
+    linear-gradient(transparent 5px, #fff 5px 9px, transparent 0),
+    radial-gradient(14px circle, #fff 50%, transparent 0);
+  mask-image:
+    radial-gradient(14px circle, #fff 50%, transparent 0),
+    linear-gradient(transparent 5px, #fff 5px 9px, transparent 0),
+    radial-gradient(14px circle, #fff 50%, transparent 0);
+  -webkit-mask-size:
+    14px 14px,
+    100% 100%,
+    14px 14px;
+  mask-size:
+    14px 14px,
+    100% 100%,
+    14px 14px;
+  -webkit-mask-position:
+    0 0,
+    0 0,
+    100% 0;
+  mask-position:
+    0 0,
+    0 0,
+    100% 0;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.toggle-c__track::before {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background-color: var(--state-on);
+  background-image:
+    radial-gradient(
+      14px 14px at 50% calc(50% + 2px),
+      var(--state-on) 50%,
+      var(--state-on-dark) calc(50% + 1px)
+    ),
+    radial-gradient(
+      14px 14px at 50% calc(50% + 2px),
+      var(--state-on) 50%,
+      var(--state-on-dark) calc(50% + 1px)
+    ),
+    linear-gradient(rgba(0, 0, 0, 0.5) calc(50% - 2px), transparent 50%);
+  background-size: inherit;
+  background-position: inherit;
+  background-repeat: inherit;
+  mask: inherit;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.toggle-c.is-checked .toggle-c__track::before {
+  opacity: 1;
+}
+
+.toggle-c__handle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: -5px;
+  z-index: 1;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  background-image: var(--wood-texture);
+  background-size: 328px 110px;
+  background-position: center;
+  box-shadow: var(--inset-shadow);
+  transition: transform var(--transition);
+}
+
+.toggle-c.is-checked .toggle-c__handle {
+  transform: translateX(35px);
+}
+
+.toggle-c__handle::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  background-color: var(--wood-dark);
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.5),
+    0 1px 1px rgba(255, 255, 255, 0.75);
+  transition: background-color var(--transition);
+}
+
+.toggle-c.is-checked .toggle-c__handle::before {
+  background-color: var(--state-on);
+}
+
+/* ─────────────── Toggle D ─────────────── */
+.toggle-d {
+  position: relative;
+  border-radius: 4px;
+  width: 76px;
+  height: 32px;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.125), rgba(255, 255, 255, 0.125)),
+    var(--wood-texture);
+  background-size:
+    100% 100%,
+    328px 110px;
+  background-position: center;
+  box-shadow:
+    inset 1px 0 1px rgba(73, 31, 1, 0.25),
+    inset -1px 0 1px rgba(73, 31, 1, 0.25),
+    0 0 1px rgba(0, 0, 0, 0.5),
+    0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.toggle-d__handle {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-radius: inherit;
+  width: 70px;
+  height: inherit;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(73, 31, 1, 0.125),
+      rgba(255, 255, 255, 0.25),
+      rgba(73, 31, 1, 0.25)
+    ),
+    var(--wood-texture);
+  background-size:
+    200% 100%,
+    328px 110px;
+  background-position:
+    100% 0,
+    center;
+  box-shadow:
+    inset 0 0.5px 1px var(--wood-edge),
+    inset 1px 0 1px var(--wood-edge);
+  transition:
+    transform var(--transition),
+    background-position var(--transition),
+    box-shadow var(--transition);
+}
+
+.toggle-d.is-checked .toggle-d__handle {
+  transform: translateX(6px);
+  background-position:
+    0 0,
+    center;
+  box-shadow:
+    inset 0 0.5px 1px var(--wood-edge),
+    inset -1px 0 1px var(--wood-edge);
+}
+
+.toggle-d__text {
+  position: absolute;
+  font-size: 14px;
+  color: var(--wood-dark);
+  text-shadow: var(--text-shadow-light);
+  transition:
+    transform var(--transition),
+    color var(--transition);
+  text-align: center;
+}
+
+.toggle-d__text--off {
+  color: #ac4443;
+  left: 8px;
+}
+
+.toggle-d.is-checked .toggle-d__text--off {
+  transform: translateX(-10%) scaleX(0.8);
+  color: var(--wood-dark);
+}
+
+.toggle-d__text--on {
+  right: 8px;
+  transform: translateX(10%) scaleX(0.8);
+}
+
+.toggle-d.is-checked .toggle-d__text--on {
+  transform: translateX(0) scaleX(1);
+  color: var(--state-on);
+}

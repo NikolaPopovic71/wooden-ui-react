@@ -1,0 +1,164 @@
+.wooden-number-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.wooden-number-wrap.is-disabled {
+  opacity: 0.42;
+  pointer-events: none;
+}
+
+.wooden-number__label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #766f6a;
+  text-shadow: var(--text-shadow-light);
+  cursor: default;
+}
+
+/* ── Field shell ── */
+.wooden-number__field {
+  display: flex;
+  align-items: stretch;
+  height: 38px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.55),
+    inset 0 1px 2px rgba(0, 0, 0, 0.3),
+    0 1px rgba(255, 255, 255, 0.45);
+  transition: box-shadow 0.2s ease;
+}
+
+.wooden-number__field:focus-within {
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.5),
+    0 0 0 2px var(--state-on),
+    0 1px rgba(255, 255, 255, 0.35);
+}
+
+.wooden-number__field--error {
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.55),
+    0 0 0 2px var(--state-off),
+    0 1px rgba(255, 255, 255, 0.35);
+}
+
+/* ── +/- Buttons ── */
+.wooden-number__btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  border: none;
+  cursor: pointer;
+  /* dark icon color — clearly visible on light wood texture */
+  color: var(--wood-darker);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.22), rgba(0, 0, 0, 0.04)),
+    var(--wood-texture);
+  background-size:
+    100% 100%,
+    328px 110px;
+  background-position: center;
+  transition:
+    filter 0.1s ease,
+    transform 0.08s ease;
+}
+
+.wooden-number__btn svg {
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+  /* extra contrast insurance */
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.5));
+}
+
+.wooden-number__btn--dec {
+  box-shadow:
+    inset -1px 0 0 rgba(0, 0, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.wooden-number__btn--inc {
+  box-shadow:
+    inset 1px 0 0 rgba(0, 0, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.wooden-number__btn:hover:not(:disabled) {
+  filter: brightness(1.12);
+}
+
+.wooden-number__btn:active:not(:disabled) {
+  filter: brightness(0.9);
+  transform: scale(0.95);
+}
+
+.wooden-number__btn:focus-visible {
+  outline: 2px solid var(--state-on);
+  outline-offset: -2px;
+}
+
+.wooden-number__btn.is-limit,
+.wooden-number__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ── Number input ── */
+.wooden-number__input-wrap {
+  flex: 1;
+  display: flex;
+  background-color: var(--wood-darker);
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.04) 50%,
+    rgba(255, 255, 255, 0.03)
+  );
+}
+
+.wooden-number__el {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0 4px;
+  font-family: "Signika", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+  color: var(--wood-light);
+  caret-color: var(--state-on);
+  width: 100%;
+  /* hide browser spin buttons */
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.wooden-number__el::-webkit-outer-spin-button,
+.wooden-number__el::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ── Meta ── */
+.wooden-number__meta {
+  min-height: 16px;
+}
+
+.wooden-number__helper {
+  font-size: 12px;
+  font-weight: 400;
+  color: #8a8178;
+  text-shadow: var(--text-shadow-light);
+}
+
+.wooden-number__error {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--state-off);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}

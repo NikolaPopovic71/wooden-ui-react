@@ -1,0 +1,155 @@
+.wooden-select {
+  position: relative;
+  width: 220px;
+}
+
+.wooden-select__label {
+  font-size: 13px;
+  color: #766f6a;
+  text-shadow: var(--text-shadow-light);
+  margin-bottom: 8px;
+}
+
+/* ── Trigger button ── */
+.wooden-select__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 12px;
+  height: 36px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Signika", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--wood-dark);
+  text-shadow: var(--text-shadow-light);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.12), rgba(0, 0, 0, 0.05)),
+    var(--wood-texture);
+  background-size:
+    100% 100%,
+    328px 110px;
+  background-position: center;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.65),
+    inset 0 -1px 3px var(--wood-shadow),
+    0 2px 4px rgba(0, 0, 0, 0.55),
+    0 1px rgba(255, 255, 255, 0.4);
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.wooden-select__trigger:hover {
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.75),
+    inset 0 -1px 4px var(--wood-shadow),
+    0 3px 6px rgba(0, 0, 0, 0.6),
+    0 1px rgba(255, 255, 255, 0.45);
+}
+
+.wooden-select__trigger:active,
+.wooden-select__trigger.is-open {
+  transform: translateY(1px);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 -1px 2px rgba(255, 255, 255, 0.2),
+    0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.wooden-select__trigger:focus-visible {
+  outline: 2px solid var(--state-on);
+  outline-offset: 2px;
+}
+
+/* ── Caret arrow ── */
+.wooden-select__arrow {
+  width: 12px;
+  height: 8px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: var(--wood-dark);
+  stroke-width: 2;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.5));
+  transition: transform 0.25s ease;
+}
+
+.wooden-select__trigger.is-open .wooden-select__arrow {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown list ── */
+.wooden-select__dropdown {
+  position: absolute;
+  z-index: 100;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  list-style: none;
+  border-radius: 5px;
+  overflow: hidden;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.04)),
+    var(--wood-texture);
+  background-size:
+    100% 100%,
+    328px 110px;
+  background-position: center;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    0 1px rgba(255, 255, 255, 0.35);
+  animation: wooden-dropdown-in 0.18s ease;
+}
+
+@keyframes wooden-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scaleY(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+/* ── Option ── */
+.wooden-select__option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #766f6a;
+  text-shadow: var(--text-shadow-light);
+  cursor: pointer;
+  border-bottom: 1px solid rgba(73, 31, 1, 0.15);
+  transition:
+    background-color 0.12s ease,
+    color 0.12s ease;
+}
+
+.wooden-select__option:last-child {
+  border-bottom: none;
+}
+
+.wooden-select__option:hover {
+  background-color: rgba(255, 255, 255, 0.18);
+  color: var(--wood-dark);
+}
+
+.wooden-select__option.is-selected {
+  color: var(--state-on);
+  background-color: rgba(86, 152, 187, 0.12);
+}
+
+.wooden-select__check {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  fill: var(--state-on);
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.2));
+}

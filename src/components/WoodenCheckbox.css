@@ -1,0 +1,119 @@
+.wooden-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.wooden-checkbox.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.wooden-checkbox__input {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* ── Carved box ── */
+.wooden-checkbox__box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  background-color: var(--wood-darker);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.65),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.08),
+    0 1px 2px rgba(255, 255, 255, 0.45);
+  transition: background-color var(--transition);
+}
+
+.wooden-checkbox.is-checked .wooden-checkbox__box {
+  background-color: var(--state-on);
+  box-shadow:
+    inset 0 2px 3px rgba(0, 0, 0, 0.45),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.12),
+    0 1px 2px rgba(255, 255, 255, 0.4);
+}
+
+/* subtle inner ring like the toggle knob */
+.wooden-checkbox__box::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 2px;
+  background-image: linear-gradient(rgba(174, 34, 1, 0.1), transparent);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+  transition: opacity var(--transition);
+}
+
+.wooden-checkbox.is-checked .wooden-checkbox__box::before {
+  opacity: 0;
+}
+
+/* ── Checkmark SVG ── */
+.wooden-checkbox__mark {
+  position: relative;
+  z-index: 1;
+  width: 14px;
+  height: 11px;
+  color: #fff;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.35));
+  overflow: visible;
+}
+
+.wooden-checkbox__mark polyline {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  transition: stroke-dashoffset 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wooden-checkbox.is-checked .wooden-checkbox__mark polyline {
+  stroke-dashoffset: 0;
+}
+
+/* ── Label ── */
+.wooden-checkbox__label {
+  font-size: 14px;
+  color: #766f6a;
+  text-shadow: var(--text-shadow-light);
+  transition: color 0.25s ease;
+}
+
+.wooden-checkbox.is-checked .wooden-checkbox__label {
+  color: var(--wood-dark);
+}
+
+/* ── Group ── */
+.wooden-checkbox-group {
+  border: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wooden-checkbox-group__legend {
+  font-size: 13px;
+  color: #766f6a;
+  text-shadow: var(--text-shadow-light);
+  margin-bottom: 10px;
+}
+
+.wooden-checkbox-group__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

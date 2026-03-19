@@ -1,0 +1,44 @@
+:root {
+  --wood-light: #d4a96a;
+  --wood-mid: #a07840;
+  --wood-dark: #775b40;
+  --wood-darker: #4b3928;
+  --wood-shadow: #b75301;
+  --wood-edge: #e9d38d;
+  --wood-burn: #ad2201;
+
+  --state-off: #bb5555;
+  --state-off-dark: #8b3020;
+  --state-on: #5698bb;
+  --state-on-dark: #33596e;
+
+  --text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  --text-shadow-light: 0 1px 1px rgba(255, 255, 255, 0.75);
+
+  --wood-texture: url("https://assets.codepen.io/4175254/wood-pattern.png");
+
+  --inset-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.75),
+    inset 0 -1px 4px #b75301, 0 1px 4px rgba(0, 0, 0, 0.75);
+  --track-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.5),
+    0 1px rgba(255, 255, 255, 0.5);
+
+  --transition: 0.4s linear;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Signika", sans-serif;
+  font-weight: 700;
+  background-color: #bbb;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,192 @@
+.app {
+  width: 100%;
+  max-width: 900px;
+  padding: 32px 24px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ─────────────── Header ─────────────── */
+.app__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  padding: 28px 0 20px;
+}
+
+.app__header-knot {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-image:
+    radial-gradient(
+      ellipse 60% 50% at 42% 38%,
+      rgba(255, 255, 255, 0.18) 0%,
+      transparent 55%
+    ),
+    var(--wood-texture);
+  background-size:
+    100% 100%,
+    328px 110px;
+  background-position: center;
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.5),
+    inset 0 -2px 6px var(--wood-shadow),
+    0 3px 8px rgba(0, 0, 0, 0.6),
+    0 1px 2px rgba(255, 255, 255, 0.35);
+  opacity: 0.35;
+}
+
+.app__title {
+  position: relative;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--wood-darker);
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.25),
+    0 1px rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.04em;
+}
+
+.app__subtitle {
+  font-size: 13px;
+  font-weight: 400;
+  color: #8a8178;
+  text-shadow: var(--text-shadow-light);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ─────────────── Grid ─────────────── */
+.app__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+/* ─────────────── Card ─────────────── */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  border-radius: 8px;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.04)),
+    var(--wood-texture);
+  background-size:
+    100% 100%,
+    328px 110px;
+  background-position: center;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.55),
+    inset 1px 0 1px rgba(255, 255, 255, 0.2),
+    inset -1px 0 1px rgba(73, 31, 1, 0.15),
+    0 4px 12px rgba(0, 0, 0, 0.45),
+    0 1px rgba(255, 255, 255, 0.4);
+}
+
+.card__title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #766f6a;
+  text-shadow: var(--text-shadow-light);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid rgba(73, 31, 1, 0.2);
+  padding-bottom: 10px;
+}
+
+.card__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card__row--center {
+  justify-content: center;
+}
+
+.card__field-label {
+  font-size: 14px;
+  color: #766f6a;
+  text-shadow: var(--text-shadow-light);
+}
+
+.card__divider {
+  height: 1px;
+  background: rgba(73, 31, 1, 0.15);
+  box-shadow: 0 1px rgba(255, 255, 255, 0.4);
+  margin: 2px 0;
+}
+
+.card--wide {
+  grid-column: 1 / -1;
+}
+
+.card__btn-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card__label-sm {
+  font-size: 11px;
+  font-weight: 700;
+  color: #8a8178;
+  text-shadow: var(--text-shadow-light);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: -4px;
+}
+
+.card__number-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.card__number-row > * {
+  flex: 1;
+  min-width: 120px;
+}
+
+/* ─────────────── State readout ─────────────── */
+.app__readout {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 20px;
+  border-radius: 5px;
+  background-color: var(--wood-darker);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.5),
+    0 1px rgba(255, 255, 255, 0.3);
+}
+
+.app__readout-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #8a7e74;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.app__readout-pre {
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--wood-light);
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
