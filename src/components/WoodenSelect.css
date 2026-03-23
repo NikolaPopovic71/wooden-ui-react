@@ -146,6 +146,23 @@
   background-color: rgba(86, 152, 187, 0.12);
 }
 
+/* keyboard-focused option — distinct from mouse hover */
+.wooden-select__option.is-focused {
+  background-color: rgba(255, 255, 255, 0.28);
+  color: var(--wood-dark);
+  outline: 2px solid var(--state-on);
+  outline-offset: -2px;
+}
+
+.wooden-select__option.is-focused.is-selected {
+  color: var(--state-on);
+}
+
+/* listbox gets focus via tabIndex=-1, hide the default ring */
+.wooden-select__dropdown:focus {
+  outline: none;
+}
+
 .wooden-select__check {
   width: 14px;
   height: 14px;
